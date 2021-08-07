@@ -49,13 +49,19 @@ namespace PlayPrivacy.Pages
             return RedirectToPage("./Index");
         }
 
-        public async Task<IActionResult> OnPostShowResultAsync()
+        public IActionResult OnPostShowResult()
         {
             var counter = _dbContext.Counter.First();
             var total = counter.Yes + counter.No;
 
             Message = $"{counter.Yes} / {total}";
 
+            return RedirectToPage("./Index");
+        }
+
+        public async Task<IActionResult> OnPostResetAsync()
+        {
+            var counter = _dbContext.Counter.First();
             counter.No = 0;
             counter.Yes = 0;
             await _dbContext.SaveChangesAsync();
