@@ -1,10 +1,20 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "PlayPrivacy";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form name="vote" method="post">
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary w-25" asp-page-handler="VoteYes" value="yes">Yep</button>
+            <button type="submit" class="btn btn-secondary w-25" asp-page-handler="VoteNo" value="no">Nope</button>
+            <br />
+            <br />
+            <button type="submit" class="btn btn-primary w-25" asp-page-handler="ShowResult">Ergebnis</button>
+        </div>
+    </form>
+
+    <h3>@Model.Message</h3>
+
 </div>
